@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>GoBus</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap");
+    </style>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;1,600&display=swap");
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="/GoBus/AOS/aos.css" />
+    <link rel="stylesheet" href="/AOS/aos.css" />
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap");
+    </style>
+  </head>
+
+  <body>
+    <!-- Шапка сайта -->
+    <header>
+      <nav>
+        <!-- Логотип как ссылка на главную страницу -->
+        <a href="index.html" class="logo">
+          <!-- ОДНУ ИЗ НИХ УДАЛИТЬ!!! -->
+          <!-- <img src="/Gobus/image/logo.svg" class="logoimg alt="GoBus" /> -->
+          <img src="image/logo.svg" class="logoimg alt="GoBus" />
+        </a>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        <ul>
+          <li><a href="#home" class="link">Главная</a></li>
+          <li><a href="#routes" class="link">Маршруты</a></li>
+          <li><a href="#info" class="link">Информация</a></li>
+          <li><a href="#contacts" class="link">Контакты</a></li>
+        </ul>
+        <button class="navi" onclick="makeCall()">Позвонить</button>
+        <script>
+          function makeCall() {
+            window.location.href = "tel:+380952404095";
+          }
+        </script>
+      </nav>
+    </header>
+
+    <!-- Основной контент -->
+    <main>
+      <!-- Раздел поиска путешествий -->
+      <section class="section-background" id="home">
+        <p class="section-background-text-1" data-aos="fade-right">
+          Пассажирские перевозки
+        </p>
+        <h1 class="section-background-text-2" data-aos="fade-right">
+          Украина - Луганск / Донецк
+        </h1>
+        <p class="section-background-text-3" data-aos="fade-right">
+          Через Польшу/Беларусь
+        </p>
+        <div class="search-bar-container" data-aos="zoom-in">
+          <input
+            class="search-bar-containerA"
+            type="text"
+            id="inputA"
+            placeholder="Откуда"
+          />
+          <input
+            class="search-bar-containerB"
+            type="text"
+            id="inputB"
+            placeholder="Куда"
+          />
+          <button
+            id="xyu"
+            class="fucking-button"
+            type="submit"
+            onclick="updateSearchResults()"
+          >
+            Найти
+          </button>
+        </div>
+      </section>
+      <section class="searchResultsBlock" id="searchResultsBlock">
+        <div id="searchResults"></div>
+      </section>
+
+      <!-- Популярные направления -->
+      <section class="concha routes-block" id="routes">
+        <h2 class="concha-text" data-aos="fade-right">
+          Популярные направления
+        </h2>
+        <!-- Список направлений -->
+        <div class="button-group">
+          <div
+            onclick="window.location.href='#xyu'"
+            class="button-item butitem2"
+            data-aos="flip-down"
+            data-aos-duration="1000"
+          >
+            <button
+              type="button"
+              class="search-button"
+              onclick="displayPredefinedRoute('Донецк', 'Киев')"
+            >
+              <!-- src="/GoBus/icon_сontact/search_icon.png"
+            src="/icon_сontact/search_icon.png" -->
+              <span class="route">Донецк - Киев</span>
+              <span class="price"
+                >от 300 €<img
+                  class="search_icon"
+                  src="/GoBus/icon_сontact/search_icon.png"
+                  alt="search_icon"
+              /></span>
+            </button>
+          </div>
+          <div
+            onclick="window.location.href='#xyu'"
+            class="button-item"
+            data-aos="flip-down"
+            data-aos-duration="1000"
+          >
+            <button
+              type="button"
+              class="search-button"
+              onclick="displayPredefinedRoute('Мариуполь', 'Киев')"
+            >
+              <span class="route">Мариуполь - Киев</span>
+              <span class="price"
+                >от 300 €<img
+                  class="search_icon"
+                  src="/GoBus/icon_сontact/search_icon.png"
+                  alt="search_icon"
+              /></span>
+            </button>
+          </div>
+          <div
+            onclick="window.location.href='#xyu'"
+            class="button-item butitem3"
+            data-aos="flip-down"
+            data-aos-duration="1000"
+          >
+            <button
+              type="button"
+              class="search-button"
+              onclick="displayPredefinedRoute('Польша', 'Донецк')"
+            >
+              <span class="route">Польша - Донецк</span>
+              <span class="price"
+                >от 250 €
+                <img
+                  class="search_icon"
+                  src="/GoBus/icon_сontact/search_icon.png"
+                  alt="search_icon"
+              /></span>
+
+              <div></div>
+            </button>
+          </div>
+        </div>
+        <div class="button-group">
+          <div
+            onclick="window.location.href='#xyu'"
+            class="button-item butitem2"
+            data-aos="flip-up"
+            data-aos-duration="1000"
+          >
+            <button
+              type="button"
+              class="search-button"
+              onclick="displayPredefinedRoute('Киев', 'Бердянск')"
+            >
+              <span class="route">Киев - Бердянск</span>
+              <span class="price"
+                >от 350 €<img
+                  class="search_icon"
+                  src="/GoBus/icon_сontact/search_icon.png"
+                  alt="search_icon"
+              /></span>
+            </button>
+          </div>
+          <div
+            onclick="window.location.href='#xyu'"
+            class="button-item"
+            data-aos="flip-up"
+            data-aos-duration="1000"
+          >
+            <button
+              type="button"
+              class="search-button"
+              onclick="displayPredefinedRoute('Варшава', 'Минск')"
+            >
+              <span class="route">Варшава - Минск</span>
+              <span class="price"
+                >от 150 €<img
+                  class="search_icon"
+                  src="/GoBus/icon_сontact/search_icon.png"
+                  alt="search_icon"
+              /></span>
+            </button>
+          </div>
+          <div
+            onclick="window.location.href='#xyu'"
+            class="button-item butitem3"
+            data-aos="flip-up"
+            data-aos-duration="1000"
+          >
+            <button
+              type="button"
+              class="search-button"
+              onclick="displayPredefinedRoute('Донецк', 'Германия')"
+            >
+              <span class="route">Донецк - Германия</span>
+              <span class="price"
+                >от 400 €<img
+                  class="search_icon"
+                  src="/GoBus/icon_сontact/search_icon.png"
+                  alt="search_icon"
+              /></span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Важное уведомление -->
+      <section id="info" class="important-block">
+        <h2 class="important-label" data-aos="fade-right">Важно!</h2>
+        <h2 class="important-label-2" data-aos="fade-right">
+          Уважаемые пассажиры
+        </h2>
+        <p class="important-label-3" data-aos="fade-right">
+          Информируем вас, что перевозки из Украины и Европы в Россию продолжают
+          осуществляться по прежним тарифам. Однако для граждан Украины без
+          паспорта РФ введена дополнительная плата в размере приблизительно 100
+          евро за перелёт Минск-Шереметьево. Для минимизации ваших расходов на
+          перелёт мы предлагаем следующую схему транспортировки багажа: основной
+          багаж будет отправлен автомобильным транспортом из Минска, а в самолёт
+          вы сможете взять необходимые и ценные вещи весом до 10 кг. По прибытии
+          в аэропорт Шереметьево за вами прибудет автомобиль, который доставит
+          вас вместе с вашим багажем до места назначения.
+        </p>
+      </section>
+
+      <section class="autoBlock">
+        <!-- Информация о транспорте -->
+        <div class="container">
+          <!-- Колонка для текста -->
+          <div class="text-column">
+            <h2 class="text-column2" data-aos="fade-right">Наш Транспорт</h2>
+            <p class="text-column3" data-aos="fade-right">
+              Компания предлагает услуги пассажирских перевозок на
+              микроавтобусах марок Mercedes Sprinter, Renault Trafic и Opel
+              Vivaro, которые оснащены необходимым оборудованием для комфортного
+              перевоза, включая полноценные сидения, внутрисалонный багажник,
+              системы контроля и кондиционирования климата: отопление,
+              дефлекторы, форточки, и розетки для подзарядки мобильных
+              устройств.
+            </p>
+          </div>
+
+          <!-- Колонка со слайдером -->
+          <div class="swiper mySwiper" data-aos="fade-left">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide"><img src="img/2Q.png" /></div>
+              <div class="swiper-slide"><img src="img/GoBus.png" /></div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Контактная информация -->
+      <div class="contact-section" id="contacts" data-aos="zoom-in">
+        <h2>Записаться на рейс:</h2>
+        <div class="telefons">
+          <a href="tel:+380952404095" class="tel-contact">+38 095 240 40 95</a>
+          <a href="tel:+380952404095" class="tel-contact">+48 452 622 852</a>
+          <a href="tel:+380952404095" class="tel-contact">+7 949 332 6499</a>
+        </div>
+        <div class="social-links">
+          <a href="https://www.facebook.com/yourprofile" target="_blank">
+            <!-- <img src="/icon_сontact/teleDark.jpg" alt="Telegrtam" /> -->
+            <img src="/GoBus/icon_сontact/teleDark.jpg" alt="Telegrtam" />
+          </a>
+
+          <a href="https://www.instagram.com/yourprofile" target="_blank">
+            <!-- <img src="/icon_сontact/viberDark.png" alt="Viber" /> -->
+            <img src="/GoBus/icon_сontact/viberDark.png" alt="Viber" />
+          </a>
+          <a href="https://www.linkedin.com/in/yourprofile" target="_blank">
+            <!-- <img src="/icon_сontact/whatsDArk.webp" alt="WhatsApp" /> -->
+            <img src="/GoBus/icon_сontact/whatsDArk.webp" alt="WhatsApp" />
+          </a>
+        </div>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+      <script src="/GoBus/AOS/aos.js"></script>
+      <script src="/AOS/aos.js"></script>
+      <script>
+        AOS.init();
+      </script>
+      <script>
+        function startSearch() {
+          const inputA = document.getElementById("inputA").value;
+          const inputB = document.getElementById("inputB").value;
+          const searchParams = new URLSearchParams({ a: inputA, b: inputB });
+          window.location.href = `search.html?${searchParams.toString()}`;
+        }
+
+        var swiper = new Swiper(".mySwiper", {
+          slidesPerView: 1,
+          spaceBetween: 30,
+          loop: true,
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+        });
+
+        const routes = [
+          {
+            passport: "passport",
+            from: "Донецк",
+            to: "Киев",
+            fromDetail: "Ав Южный, Мотель, Макеевка",
+            toDetail: "Центральный ж/д вокзал Киева",
+            price: "300 €",
+            Traveltime: "69",
+            information:
+              "Отправление- 07.00<br>В пути: до Варшавы 34 часа (без учёта таможни)<br>до Киева 48 часов (без учета таможни)<br>Место отправления: Ав Южный, Мотель, Макеевка<br>Пункт пропуска: Успенка/Терехово/Шегени(могут изм.)<br>Место прибытия в Варшаву: Авто/жд вокзал Варшава Заходня<br>Расстояние: 2700 км.<br>Место прибытия в Киев: Центральный ж.д вокзал<br>Расстояние: 3500 км.",
+            passportNot: "passportNot",
+            fromNot: "Донецк",
+            toNot: "Киев",
+            fromDetailNot: "Ав Южный, Мотель, Макеевка",
+            toDetailNot: "Центральный ж/д вокзал Киева",
+            priceNot: "300 €",
+            TraveltimeNot: "69",
+            informationNot:
+              "Дополнительная информация о маршруте, условиях поездки, времени отправления и прибытия и т.д.",
+          },
+          {
+            from: "Донецк",
+            to: "Львов",
+            fromDetail: "Ав Центральный",
+            toDetail: "Центральный автовокзал Львова",
+            price: "350 €",
+          },
+          {
+            from: "Харьков",
+            to: "Киев",
+            fromDetail: "Ав Южный",
+            toDetail: "Центральный ж/д вокзал Киева",
+            price: "250 €",
+          },
+          {
+            from: "Харьков",
+            to: "Львов",
+            fromDetail: "Ав Центральный",
+            toDetail: "Центральный автовокзал Львова",
+            price: "400 €",
+          },
+        ];
+
+        function getSearchParams() {
+          const params = new URLSearchParams(window.location.search);
+          return {
+            a: params.get("a") ? decodeURIComponent(params.get("a")) : "",
+            b: params.get("b") ? decodeURIComponent(params.get("b")) : "",
+          };
+        }
+
+        function displaySearchResults(searchParams) {
+          const resultsContainer = document.getElementById("searchResults");
+          const searchResultsBlock =
+            document.getElementById("searchResultsBlock");
+          resultsContainer.innerHTML = ""; // Очищаем контейнер перед обновлением
+          const matchingRoutes = routes.filter(
+            (route) =>
+              route.from.toLowerCase() === searchParams.a.toLowerCase() &&
+              route.to.toLowerCase() === searchParams.b.toLowerCase()
+          );
+
+          if (matchingRoutes.length > 0) {
+            matchingRoutes.forEach((route) => {
+              const offerElement = document.createElement("div");
+              offerElement.className = "";
+
+              const routeDetails = `
+              <div class="passport"  ><img class="imgpassport" src="/GoBus/img/free-icon-passport-3125661 2.svg"/><a>При наличии паспорта РФ</a></div>
+                    <div class="offer"  >
+                      <!-- <div class="passport">${route.passport}</div>-->
+                        
+                        <div class="route">
+                            <div class="route-details">
+                                <div class="city from-city">
+                                    <p>${route.from}</p>
+                                    <p class="from-to-det">${route.fromDetail}</p>
+                                </div>
+                                <div class ="line"><img class="imgline" src="/GoBus/img/Line 9.svg"/></div> 
+                                
+                                <div class="city to-city">
+                                    <p>${route.to}</p>
+                                    <p class="from-to-det">${route.toDetail}</p>
+                                </div>
+                                <div class= "price-price">
+                                <p >${route.price}</p></div>
+                            </div>
+                            <div class="price-details">
+                              <p class= "Bus" >
+                                <img class="imgBos Buuus" src="/GoBus/img/микроавтобус.svg"/>
+                                <a class= "aBus Buuus">Автобус: Без остоновок </a></p>
+                              <img class="img2Bos" src="/GoBus/img/вай фай.svg"/>
+                              <img class="img3Bos" src="/GoBus/img/розетка.svg"/>
+                              <p class="Traveltime Buuus">
+                              <a>${route.Traveltime} часов в пути без таможни</a></p>
+                                <button class="details-btn"><a>Подробности</a></button>
+                            </div>
+                        </div>
+
+                        <div class="details">
+                            <p>${route.information}</p><a class="details-btn2" href="https://youtu.be/x5HqcwD4Sxs?t=15">Подробности</a>
+                        </div>
+                    </div>
+
+
+                    <div class="passport offerrpassport"><img class="imgpassport" src="/GoBus/img/free-icon-passport-3125661 2.svg"/><a>При наличии паспорта Украины</a></div>
+                    <div class="offerr">
+                      <!-- <div class="passport">${route.passportNot}</div>-->
+                        
+                        <div class="route">
+                            <div class="route-details">
+                                <div class="city from-city">
+                                    <p>${route.fromNot}</p>
+                                    <p class="from-to-det">${route.fromDetailNot}</p>
+                                </div>
+                                <div class ="line2"><img class="imgline2" src="/GoBus/img/Line 9.svg"/></div>
+                                <div class="city to-city">
+                                    <p>${route.toNot}</p>
+                                    <p class="from-to-det"><a>${route.toDetailNot}</a></p>
+                                </div>
+                                <div class="price-price">
+                                <p >${route.priceNot}</p></div>
+                            </div>
+                            <div class="price-details">
+                              <p class= "Bus" ><img class="imgBos" src="/GoBus/img/микроавтобус.svg"/>
+                                <a class= "aBus">Автобус: Без остоновок </a></p>
+                              <img class="img2Bos" src="/GoBus/img/вай фай.svg"/>
+                              <img class="img3Bos" src="/GoBus/img/розетка.svg"/>
+                              <p class="Traveltime">
+                                <a>${route.TraveltimeNot} часов в пути без таможни</a></p>
+                                <button class="details-btn"><a>Подробности</a></button>
+                            </div>
+                        </div>
+                        <div class="details">
+                            <p>${route.informationNot}</p><a class="details-btn2" href="https://youtu.be/x5HqcwD4Sxs?t=15">Подробности</a>
+                        </div>
+                    </div>
+                `;
+
+              offerElement.innerHTML = routeDetails;
+              resultsContainer.appendChild(offerElement);
+              resultsContainer.classList.remove("no-route-found");
+            });
+
+            // Назначаем обработчики событий для всех кнопок "Подробности"
+            document.querySelectorAll(".details-btn").forEach((button) => {
+              button.addEventListener("click", function () {
+                const details =
+                  this.parentElement.parentElement.nextElementSibling;
+                if (
+                  details.style.display === "none" ||
+                  details.style.display === ""
+                ) {
+                  details.style.display = "block";
+                  this.textContent = "Скрыть";
+                } else {
+                  details.style.display = "none";
+                  this.textContent = "Подробности";
+                }
+              });
+            });
+          } else {
+            resultsContainer.textContent = "Маршрут не найден.";
+            resultsContainer.classList.add("no-route-found");
+          }
+          searchResultsBlock.style.display = "block";
+        }
+
+        function updateSearchResults() {
+          const inputA = document.getElementById("inputA").value.trim();
+          const inputB = document.getElementById("inputB").value.trim();
+          const searchParams = { a: inputA, b: inputB };
+          displaySearchResults(searchParams);
+        }
+
+        function displayPredefinedRoute(from, to) {
+          const searchParams = { a: from, b: to };
+          displaySearchResults(searchParams);
+        }
+
+        window.onload = function () {
+          const searchParams = getSearchParams();
+          if (searchParams.a && searchParams.b) {
+            document.getElementById("inputA").value = searchParams.a;
+            document.getElementById("inputB").value = searchParams.b;
+            displaySearchResults(searchParams);
+          }
+        };
+      </script>
+      <script>
+        function toggleMenu() {
+          const menu = document.querySelector(".menu");
+          menu.classList.toggle("active");
+        }
+      </script>
+    </main>
+
+    <!-- Подвал сайта -->
+    <footer>
+      <p class="footer">&copy; 2024 GoBus. Все права защищены.</p>
+    </footer>
+  </body>
+</html>
